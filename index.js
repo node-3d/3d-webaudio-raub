@@ -3,15 +3,25 @@
 const webaudio = require('webaudio-raub');
 
 
-module.exports = core => {
+const _init = (opts) => {
+	const { window } = opts;
+	const { AudioContext } = webaudio;
 	
-	if (core.webaudio) {
-		return;
-	}
+	window.AudioContext = AudioContext;
+	global.AudioContext = AudioContext;
 	
-	core.webaudio = webaudio;
-	
-	core.window.AudioContext = webaudio.AudioContext;
-	global.AudioContext = webaudio.AudioContext;
-	
+	return {
+		webaudio,
+	};
 };
+
+let inited = null;
+const init = (opts) => {
+	if (inited) {
+		return inited;
+	}
+	inited = _init(opts);
+	return inited;
+};
+
+module.exports = { init };

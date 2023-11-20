@@ -2,40 +2,29 @@
 
 This is a part of [Node3D](https://github.com/node-3d) project.
 
-[![NPM](https://nodei.co/npm/3d-webaudio-raub.png?compact=true)](https://www.npmjs.com/package/3d-webaudio-raub)
+[![NPM](https://badge.fury.io/js/3d-webaudio-raub.svg)](https://badge.fury.io/js/3d-webaudio-raub)
+[![ESLint](https://github.com/node-3d/3d-webaudio-raub/actions/workflows/eslint.yml/badge.svg)](https://github.com/node-3d/3d-webaudio-raub/actions/workflows/eslint.yml)
+[![Test](https://github.com/node-3d/3d-webaudio-raub/actions/workflows/test.yml/badge.svg)](https://github.com/node-3d/3d-webaudio-raub/actions/workflows/test.yml)
 
-[![Build Status](https://api.travis-ci.com/node-3d/3d-webaudio-raub.svg?branch=master)](https://travis-ci.com/node-3d/3d-webaudio-raub)
-[![CodeFactor](https://www.codefactor.io/repository/github/node-3d/3d-webaudio-raub/badge)](https://www.codefactor.io/repository/github/node-3d/3d-webaudio-raub)
-
-> npm i 3d-webaudio-raub
-
-
-## Synopsis
-
-WebAudio plugin for Node.js 3D Core.
-
-This plugin injects WebAudio API into Node3D's `window`.
-
+```console
+npm i -s 3d-webaudio-raub
 ```
-const { webaudio, window } = init({ plugins: ['3d-webaudio-raub'] });
+
+WebAudio plugin for Node.js 3D Core. It injects WebAudio API into Node3D's `window`.
+
+```typescript
+import { init } from '3d-core-raub';
+import { init as initWebaudio } from '3d-webaudio-raub';
+
+// Fetch `window` from standard Node3D init
+const { window } = init();
+
+// Initialize Webaudio
+const { webaudio } = initWebaudio({ window });
 // webaudio.AudioContext === window.AudioContext === global.AudioContext
 ```
 
 **This module is WORK IN PROGRESS.** Some features are missing for good.
-
----
-
-First, import/init the plugin:
-
-```
-const init3dCore = require('3d-core-raub');
-
-const { webaudio, window } = init3dCore({ plugins: ['3d-qml-raub'] });
-
-// webaudio.AudioContext === window.AudioContext === global.AudioContext
-
-// ...
-```
 
 For the full contents of currently exported `webaudio` object, see the
 docs of [webaudio-raub](https://github.com/node-3d/webaudio-raub). This plugin
