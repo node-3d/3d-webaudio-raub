@@ -3,9 +3,9 @@
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as three from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { init, addThreeHelpers } from '3d-core-raub';
 import { init as initWebaudio } from '3d-webaudio-raub';
-
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -43,6 +43,8 @@ const floorMaterial = new three.MeshStandardMaterial({ color: 0x4676b6 });
 
 const camera = new three.PerspectiveCamera(75, doc.w / doc.h, 0.1, 100);
 camera.position.set(0, 2, 4.5);
+const controls = new OrbitControls(camera, doc as unknown as HTMLElement);
+controls.update();
 
 const scene = new three.Scene();
 
@@ -82,6 +84,7 @@ renderer.setPixelRatio( window.devicePixelRatio );
 window.addEventListener('resize', () => {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
+	controls.update();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 });
 
@@ -155,6 +158,7 @@ const animate = () => {
 		}
 	});
 	
+	controls.update();
 	renderer.render(scene, camera);
 };
 
