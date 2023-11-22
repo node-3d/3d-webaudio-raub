@@ -28,4 +28,4 @@ const { webaudio } = initWebaudio({ window });
 
 For the full contents of currently exported `webaudio` object, see the
 docs of [webaudio-raub](https://github.com/node-3d/webaudio-raub). This plugin
-reexports those as is.
+re-exports those as is.
