@@ -10,7 +10,15 @@ This is a part of [Node3D](https://github.com/node-3d) project.
 npm i -s 3d-webaudio-raub
 ```
 
-WebAudio plugin for Node.js 3D Core. It injects WebAudio API into Node3D's `window`.
+![Example](examples/screenshot.jpg)
+
+This plugin injects WebAudio API into Node3D's `window`. It ain't much, but it's honest work.
+
+The WebAudio implementation is provided by [webaudio-raub](https://github.com/node-3d/webaudio-raub).
+Some WebAudio features may be missing, but it works with Three.js. With positional audio.
+
+Refer to [webaudio-raub](https://github.com/node-3d/webaudio-raub) for the full list
+of currently implemented API.
 
 ```typescript
 import { init } from '3d-core-raub';
@@ -24,8 +32,6 @@ const { webaudio } = initWebaudio({ window });
 // webaudio.AudioContext === window.AudioContext === global.AudioContext
 ```
 
-**This module is WORK IN PROGRESS.** Some features are missing for good.
-
-For the full contents of currently exported `webaudio` object, see the
-docs of [webaudio-raub](https://github.com/node-3d/webaudio-raub). This plugin
-re-exports those as is.
+Here, `webaudio` is directly re-exported [webaudio-raub](https://github.com/node-3d/webaudio-raub).
+You can also use it through `window.AudioContext` or just `AudioContext`. But the main idea is
+using it with Three.js, [like this](https://threejs.org/docs/#api/en/audio/PositionalAudio).
